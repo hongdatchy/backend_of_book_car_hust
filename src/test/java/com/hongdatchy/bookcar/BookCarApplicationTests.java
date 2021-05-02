@@ -3,10 +3,10 @@ package com.hongdatchy.bookcar;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class BookCarApplicationTests {
 
-    @Test
+//    @Test
     void contextLoads() {
     }
 

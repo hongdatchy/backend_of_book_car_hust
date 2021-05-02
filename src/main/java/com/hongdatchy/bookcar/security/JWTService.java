@@ -10,7 +10,7 @@ import static com.hongdatchy.bookcar.security.SecurityConstants.*;
 @Service
 public class JWTService {
 
-    public String getToken(String username) throws Exception{
+    public String getToken(String username) {
         return TOKEN_PREFIX + JWT.create()
                 .withSubject(username)
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))

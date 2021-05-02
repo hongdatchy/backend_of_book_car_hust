@@ -1,5 +1,6 @@
 package com.hongdatchy.bookcar.security;
 
+import com.hongdatchy.bookcar.repo.DriverRepo;
 import com.hongdatchy.bookcar.repo.UserRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -16,6 +17,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     private final UserRepo userRepo;
+    private final DriverRepo driverRepo;
     private final JWTService jwtService;
 
     @Override
@@ -28,10 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     }
 
     @Bean
-    public FilterRegistrationBean<UserFilter> jwtFilterUser() {
-        FilterRegistrationBean<UserFilter> registrationBean = new FilterRegistrationBean<>();
-        registrationBean.setFilter(new UserFilter(userRepo,jwtService));
-        registrationBean.addUrlPatterns("/api/us/*");
+    public FilterRegistrationBean<JWTFilter> jwtFilterUser() {
+        FilterRegistrationBean<JWTFilter> registrationBean = new FilterRegistrationBean<>();
+        registrationBean.setFilter(new JWTFilter(userRepo, driverRepo, jwtService));
+        registrationBean.addUrlPatterns("/api/us/*", "/api/dv/*");
         return registrationBean;
     }
 
