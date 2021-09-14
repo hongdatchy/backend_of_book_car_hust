@@ -5,5 +5,7 @@ import com.hongdatchy.bookcar.entities.payload.LoginForm;
 
 public interface DriverService {
     boolean login(LoginForm loginForm);
-//    boolean agreeToDrive()
+
+    boolean applyContract(int contractId, Driver driver);
+
 }

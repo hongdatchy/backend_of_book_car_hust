@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -19,5 +20,18 @@ public class ContractRepo_Impl implements ContractRepo {
     @Override
     public Contract createAndUpdate(Contract contract) {
         return entityManager.merge(contract);
+    }
+
+    @Override
+    public List<Contract> findByUserId(Integer userId) {
+        return entityManager.createQuery("select x from Contract x where x.userId =: userId")
+                .setParameter("userId", userId)
+                .getResultList();
+    }
+
+    @Override
+    public List<Contract> findAll() {
+        return entityManager.createQuery("select x from Contract x")
+                .getResultList();
     }
 }

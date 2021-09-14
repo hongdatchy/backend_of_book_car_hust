@@ -28,13 +28,13 @@ public class UserService_Impl implements UserService {
     }
 
     @Override
-    public boolean book(BookPayload bookPayload, User user) {
+    public Contract book(BookPayload bookPayload, User user) {
         return contractRepo.createAndUpdate(Contract.builder()
                 .userId(user.getId())
                 .time(new Timestamp(new Date().getTime()))
                 .distance(bookPayload.getDistance())
                 .cost(bookPayload.getCost())
-                .build()) != null;
+                .build());
     }
 
     @Override

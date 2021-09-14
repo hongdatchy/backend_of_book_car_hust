@@ -25,7 +25,7 @@ public class CommonController {
 
     @PostMapping("api/public/common/login")
     public ResponseEntity<Object> userLogin(@RequestBody LoginForm loginForm) {
-
+        System.out.println(loginForm);
         if(userService.login(loginForm)){
             String phone = userService.findByUsername(loginForm.getUsername()).getPhone();
             return ResponseEntity.ok(MyResponse
@@ -36,4 +36,6 @@ public class CommonController {
         }
         return ResponseEntity.ok(MyResponse.fail("invalidate username or password"));
     }
+    
+
 }
