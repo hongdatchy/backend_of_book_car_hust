@@ -10,4 +10,4 @@ Install:
 
 -	create database as following image
 
-<img src="https://github.com/hongdatchy/backend_of_book_car_hust/database.png"/>
+<img src="https://github.com/hongdatchy/backend_of_book_car_hust/blob/master/database.png"/>
